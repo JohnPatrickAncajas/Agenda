@@ -33,6 +33,14 @@ button {
     cursor: pointer;
 }
 
+#addButton {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#addButton:hover {
+    background-color: #357996c0;
+}
+
 .task {
     display: grid;
     grid-template-rows: auto auto;

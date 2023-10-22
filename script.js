@@ -5,8 +5,6 @@ let agenda = [
 function addTask() {
 
     const taskList = document.querySelector("#taskList");
-    taskList.innerHTML = "";
-
     const taskInput = document.getElementById("taskInput");
     const timeInput = document.getElementById("taskTime");
 
@@ -14,6 +12,8 @@ function addTask() {
     const taskTime = timeInput.value.trim();
     
     if (taskText !== "" && taskTime !== "") {
+
+        taskList.innerHTML = "";
 
         const hours = taskTime[0] + taskTime[1];
         const minutes = taskTime[3] + taskTime[4];
@@ -33,7 +33,7 @@ function addTask() {
         const newTask = {time: hoursDisplayValue + ":" + minutesDisplayValue + dayPeriod, task: taskText};
         agenda.push(newTask);
 
-        addTaskElement();
+        updateTask();
 
     taskInput.value = "";
     timeInput.value = "";
@@ -42,7 +42,7 @@ function addTask() {
 
 // During the creation of this part is the first time JavaScript hit me with [object Object][object Object]!
 
-function addTaskElement() {
+function updateTask() {
     for (let i = 0; i < agenda.length; i++) {
 
         const divElement = document.createElement("p");
@@ -51,18 +51,29 @@ function addTaskElement() {
         const taskElement = document.createElement("p");
 
         divElement.className = "task";
+        divElement.id = "task" + i;
         timeElement.className = "timeClass";
         timeElement.innerHTML = agenda[i].time;
         xElement.className = "xClass";
-        xElement.innerHTML = "&times; ";
+        xElement.id = "x" + i;
+        xElement.innerHTML = "&times;";
         taskElement.className = "taskClass";
         taskElement.innerHTML = "<hr>" + agenda[i].task;
+
+        const firstChild = taskList.firstElementChild;
 
         divElement.appendChild(timeElement);
         divElement.appendChild(xElement);
         divElement.appendChild(taskElement)
-        taskList.appendChild(divElement);
+
+        taskList.insertBefore(divElement, firstChild);
     }
+}
+
+const xButton = document.querySelectorAll(".xClass");
+
+xButton.addEventListener('click'), function() {
+
 }
 
 window.addEventListener('load', function() {
@@ -72,5 +83,5 @@ window.addEventListener('load', function() {
     title.textContent = "Agenda";
     titleText.textContent = "Take control of your time and easily structure your day in just a few clicks!";
 
-    addTaskElement();
+    updateTask();
 });
