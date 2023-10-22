@@ -67,16 +67,29 @@ function updateTask() {
         divElement.appendChild(taskElement)
 
         taskList.insertBefore(divElement, firstChild);
+
+        const xButton = document.querySelectorAll(".xClass");
+
+        xButton.forEach(function(element) {
+            element.addEventListener("click", function() {
+
+            const charactersWhole = this.id;
+            const characters = charactersWhole.split("");
+            
+            const divToRemove = document.getElementById("task" + characters[1]);
+
+            const removeButton = document.getElementById("removeButton");
+
+            divToRemove.remove();
+            agenda.splice(characters[1]);
+            console.log(agenda);
+            
+            });
+        });
     }
 }
-
-const xButton = document.querySelectorAll(".xClass");
-
-xButton.addEventListener('click'), function() {
-
-}
-
-window.addEventListener('load', function() {
+  
+window.addEventListener("load", function() {
     const title = document.querySelector("#title");
     const titleText = document.querySelector("#titleText");
 
