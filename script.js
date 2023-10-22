@@ -1,5 +1,5 @@
 let agenda = [
-    {time: "6:00AM", task: "Good Morning! It's a brand new day, take care!"},
+    {time: "6:00 AM", task: "Good Morning! It's a brand new day, take care!"},
 ];
 
 function addTask() {
@@ -27,7 +27,7 @@ function addTask() {
             minutesDisplayValue = minutesValue;
         }
 
-        const dayPeriod = hoursValue < 12 ? "AM" : "PM";
+        const dayPeriod = hoursValue < 12 ? " AM" : " PM";
         const hoursDisplayValue = (hoursValue % 12) || 12;
 
         const newTask = {time: hoursDisplayValue + ":" + minutesDisplayValue + dayPeriod, task: taskText};
@@ -47,15 +47,19 @@ function addTaskElement() {
 
         const divElement = document.createElement("p");
         const timeElement = document.createElement("p");
+        const xElement = document.createElement("p");
         const taskElement = document.createElement("p");
 
         divElement.className = "task";
         timeElement.className = "timeClass";
-        timeElement.innerHTML = agenda[i].time + "<hr>";
+        timeElement.innerHTML = agenda[i].time;
+        xElement.className = "xClass";
+        xElement.innerHTML = "&times; ";
         taskElement.className = "taskClass";
-        taskElement.innerHTML = agenda[i].task;
+        taskElement.innerHTML = "<hr>" + agenda[i].task;
 
         divElement.appendChild(timeElement);
+        divElement.appendChild(xElement);
         divElement.appendChild(taskElement)
         taskList.appendChild(divElement);
     }
