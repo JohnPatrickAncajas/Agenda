@@ -1,5 +1,9 @@
 let agenda = [
     { time: "6:00 AM", task: "Good Morning! It's a brand new day, take care!" },
+    { time: "7:00 AM", task: "Remember to eat your breakfast!"},
+    { time: "12:00 PM", task: "Lunch time! Eat well!"},
+    { time: "6:00 PM", task: "Time for dinner!"},
+    { time: "10:00 PM", task: "Bedtime!"},
 ];
 
 function addTask() {
@@ -30,6 +34,13 @@ function addTask() {
 function updateTask() {
     const taskList = document.querySelector("#taskList");
     taskList.innerHTML = "";
+
+    agenda.sort((a, b) => {
+        const timeA = new Date("2023-01-01 " + a.time);
+        const timeB = new Date("2023-01-01 " + b.time);
+
+        return timeA - timeB;
+    });
 
     for (let i = 0; i < agenda.length; i++) {
         const divElement = document.createElement("div");

@@ -31,6 +31,7 @@ button {
     border: 2px solid #0f2027de;
     border-radius: .5rem;
     cursor: pointer;
+    line-height: 2;
 }
 
 #addButton {
@@ -66,6 +67,13 @@ button {
 .xClass {
     text-align: right;
     grid-column: 2/2;
+    transition: font-size 0.3s, color 0.3s;
+
+}
+
+.xClass:hover {
+    font-size: 150%;
+    color: #f7f7f7d5;
 }
 
 .taskClass {
@@ -83,5 +91,11 @@ button {
     button {
        width: 20vw;
        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    button {
+        padding: .2rem 0;
     }
 }
