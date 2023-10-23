@@ -1,5 +1,5 @@
 let agenda = [
-    { time: "6:00 AM", task: "Good Morning! It's a brand new day, take care!" },
+    { time: "6:00 AM", task: "Good morning! It's a brand new day, take care!" },
     { time: "7:00 AM", task: "Remember to eat your breakfast!"},
     { time: "12:00 PM", task: "Lunch time! Eat well!"},
     { time: "6:00 PM", task: "Time for dinner!"},
@@ -28,6 +28,55 @@ function addTask() {
         timeInput.value = "";
 
         updateTask();
+
+    } else if (taskText == "" && taskTime == "") {
+        taskInput.style.background = "#FFDDDD";
+        timeInput.style.background = "#FFDDDD";
+
+        setTimeout(function () {
+            taskInput.style.background = "#FFCCCC";
+            timeInput.style.background = "#FFCCCC";
+        }, 200);
+
+        setTimeout(function () {
+            taskInput.style.background = "#FFBBBB";
+            timeInput.style.background = "#FFBBBB";
+        }, 400);
+
+        setTimeout(function () {
+            taskInput.style.background = "#f0f0f0";
+            timeInput.style.background = "#f0f0f0";
+        }, 600);
+        
+    } else if (taskText == "" && taskTime !== "") {
+        taskInput.style.background = "#FFDDDD";
+
+        setTimeout(function () {
+            taskInput.style.background = "#FFCCCC";
+        }, 200);
+
+        setTimeout(function () {
+            taskInput.style.background = "#FFBBBB";
+        }, 400);
+
+        setTimeout(function () {
+            taskInput.style.background = "#f0f0f0";
+        }, 600);
+
+    } else if (taskText !== "" && taskTime == "") {
+        timeInput.style.background = "#FFDDDD";
+
+        setTimeout(function () {
+            timeInput.style.background = "#FFCCCC";
+        }, 200);
+
+        setTimeout(function () {
+            timeInput.style.background = "#FFBBBB";
+        }, 400);
+
+        setTimeout(function () {
+            timeInput.style.background = "#f0f0f0";
+        }, 600);
     }
 }
 
