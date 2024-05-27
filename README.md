@@ -1,2 +1,2 @@
 # Agenda
- Take control of your time and tasks with Agenda, where you can easily structure your day or event schedules in just a few clicks.
+A simple note taking web page that uses HTML5, CSS3 and JavaScript.
